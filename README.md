@@ -12,6 +12,13 @@ The configuration settings that are needed for this implementation of Zoneminder
 
 This verson will now upgrade from previous versions.
 
+### Remove files of events
+```bash
+sudo su 
+cd /var/lib/docker/volumes/zoneminder_data/_data/events 
+rm -rf * .*
+```
+
 ### Installation
 Install the docker by going to a command line and enter the command:
 
