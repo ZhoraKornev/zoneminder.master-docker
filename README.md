@@ -18,7 +18,7 @@ sudo su
 cd /var/lib/docker/volumes/zoneminder_data/_data/events 
 rm -rf * .*
 ```
-###Eternal connection to mysql
+###External connection to mysql
 docker-compose exec zoneminder bash
 nano /etc/mysql/my.cnf
 @see https://mariadb.com/kb/en/configuring-mariadb-for-remote-client-access/
