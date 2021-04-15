@@ -10,7 +10,7 @@ This is an easy to run dockerized image of [ZoneMinder](https://github.com/ZoneM
 
 The configuration settings that are needed for this implementation of Zoneminder are pre-applied and do not need to be changed on the first run of Zoneminder.
 
-This verson will now upgrade from previous versions.
+This version will now upgrade from previous versions.
 
 ### Remove files of events
 ```bash
@@ -18,9 +18,27 @@ sudo su
 cd /var/lib/docker/volumes/zoneminder_data/_data/events 
 rm -rf * .*
 ```
+###Eternal connection to mysql
+docker-compose exec zoneminder bash
+nano /etc/mysql/my.cnf
+@see https://mariadb.com/kb/en/configuring-mariadb-for-remote-client-access/
+add new lines
+```bash
+[mysqld]
+skip-networking=0
+skip-bind-address
+#skip-networking
+#bind-address = <some ip-address>
+```
+UPDATE mysql.user SET Host='%' WHERE Host='localhost' AND User='root';
+use credential from mysql_secure_installation.sql for external connection
 
 ### Installation
-Install the docker by going to a command line and enter the command:
+Just run redeploy script
+
+
+
+####DEPRECATED method from author:
 
 ```bash
 docker pull dlandon/zoneminder.master
