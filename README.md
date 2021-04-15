@@ -30,6 +30,8 @@ skip-bind-address
 #skip-networking
 #bind-address = <some ip-address>
 ```
+service mysql restart
+
 UPDATE mysql.user SET Host='%' WHERE Host='localhost' AND User='root';
 use credential from mysql_secure_installation.sql for external connection
 
